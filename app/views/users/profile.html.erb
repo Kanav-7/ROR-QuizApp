@@ -1,0 +1,13 @@
+<% content_for :top_content do %>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Profile of <%=@user.name%></h1>
+      <p>He is Awesome Quizzer :)</p>
+      <p>
+        <b>User ID:</b> <%=@user.id%><br>
+		    <b>Email:</b> <%=@user.email%><br>
+        <b>Type:</b> <%=@user.user_type%>
+      </p>
+    </div>
+  </div>
+<% end %>
