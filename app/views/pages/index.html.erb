@@ -1,7 +1,12 @@
 <% content_for :top_content do %>
   <div class="jumbotron">
     <div class="container">
-     <% if user_signed_in? %>
+    <% if user_signed_in? && current_user.user_type? %>
+      <h1> Welcome to Quizapp </h1>
+      <p>You Are Adminstrator</p> 
+      <%= link_to 'Admin Page',rails_admin_path, class: 'btn btn-primary btn-lg'%>
+
+     <% elsif user_signed_in? %>
      	<h1> Welcome to Quizapp </h1>
      	<p>Select Your Quiz here:</p>
      <% else %>	
