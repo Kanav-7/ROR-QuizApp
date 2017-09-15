@@ -1,21 +1,39 @@
 <% content_for :top_content do %>
+  
+  <% if user_signed_in? && current_user.user_type? %>
   <div class="jumbotron">
     <div class="container">
-    <% if user_signed_in? && current_user.user_type? %>
-      <h1> Welcome to Quizapp </h1>
+      <h1>Welcome to Quizapp </h1>
       <p>You Are Adminstrator</p> 
       <%= link_to 'Admin Page',rails_admin_path, class: 'btn btn-primary btn-lg'%>
+    </div>
+  </div>
 
-     <% elsif user_signed_in? %>
-     	<h1> Welcome to Quizapp </h1>
-     	<p>Select Your Quiz here:</p>
-     <% else %>	
+
+
+  <% elsif user_signed_in? %>
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Welcome to Quizapp </h1>
+      <p>Select Your Quiz here:</p>
+  </div>
+    </div>
+
+  <div class="container">
+    <%= link_to 'Cricket Quiz', new_user_registration_path, class: 'btn btn-danger btn-lg' %>
+  </div>    
+
+  <% else %>	
+  <div class="jumbotron">
+    <div class="container">  
       <h1>Welcome!</h1>
       <p>Register to get started.</p>
       <p>
         <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
       </p>
-      <% end %>
-    </div>
   </div>
+    </div>
+  <% end %>
+
 <% end %>
+  

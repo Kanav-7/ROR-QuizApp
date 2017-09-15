@@ -6,7 +6,7 @@
       <p>
         <b>User ID:</b> <%=@user.id%><br>
 		    <b>Email:</b> <%=@user.email%><br>
-        <b>Type:</b> <%=@user.user_type%>
+        <b>Type:</b> <% if @user.user_type%> Admin <% else %> Quizzer <% end %>
       </p>
     </div>
   </div>
