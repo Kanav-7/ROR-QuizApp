@@ -1,23 +1,22 @@
 <% content_for :top_content do %>
   <div class="container">
-  	  <!-- <%= @questions.inspect %> -->
-      <% Array(@questions).each_with_index do |question,i| %>
-      	<h3><strong>Question <%= i+1 %></strong></h3>
-      	<strong><%= question.content %></strong><br>
-      	<form>
+  	  <%= @question.inspect %> 
+      	<h3><strong>Question <%= $p+1 %></strong></h3>
+      	<strong><%= @question.content %></strong><br>
+      	<form action= <%= @question.quiz_type.to_s %> method="post">
       	  <div class="checkbox">
-	      		<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op1"> <%= question.op1 %> </label>
+	      		<label><%= check_box_tag(:A) %><%= @question.op1 %> </label>
 	      	</div>
 	      	<div class="checkbox">
-	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op2"> <%= question.op2 %> </label>
+	      	<label><%= check_box_tag(:B) %> <%= @question.op2 %> </label>
 	      	</div>
 	      	<div class="checkbox">
-	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op3"> <%= question.op3 %> </label>
+	      	<label><%= check_box_tag(:C) %> <%= @question.op3 %> </label>
 	      	</div>
 	      	<div class="checkbox">
-	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op4"> <%= question.op4 %> </label>   
+	      	<label><%= check_box_tag(:D) %> <%= @question.op4 %> </label>   
 	      	</div>
+	      	<input type="submit" name="Submit" value="Submit">
       	</form>  	      	      	
-    <% end %>
     </div>
 <% end %>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # , :controllers => { :omniauth_callbacks => "callbacks" }
   get 'users/:id' => 'users#profile'
   get 'questions/:quiz_type' => 'questions#show'
+  post 'questions/:quiz_type' => 'questions#update'
   get 'pages/index'
   root to:'pages#index'
 
