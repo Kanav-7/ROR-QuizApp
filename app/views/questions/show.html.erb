@@ -1,0 +1,23 @@
+<% content_for :top_content do %>
+  <div class="container">
+  	  <!-- <%= @questions.inspect %> -->
+      <% Array(@questions).each_with_index do |question,i| %>
+      	<h3><strong>Question <%= i+1 %></strong></h3>
+      	<strong><%= question.content %></strong><br>
+      	<form>
+      	  <div class="checkbox">
+	      		<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op1"> <%= question.op1 %> </label>
+	      	</div>
+	      	<div class="checkbox">
+	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op2"> <%= question.op2 %> </label>
+	      	</div>
+	      	<div class="checkbox">
+	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op3"> <%= question.op3 %> </label>
+	      	</div>
+	      	<div class="checkbox">
+	      	<label><input type="checkbox" name =  <%= question.id.to_s %> id = "op4"> <%= question.op4 %> </label>   
+	      	</div>
+      	</form>  	      	      	
+    <% end %>
+    </div>
+<% end %>

@@ -18,10 +18,12 @@
       <p>Select Your Quiz here:</p>
   </div>
     </div>
+<div class="container">
+  <h2> Sports Quiz </h2>
+    <%= link_to 'Cricket Quiz', "/questions/1", class: 'btn btn-success btn-lg' %>
 
-  <div class="container">
-    <%= link_to 'Cricket Quiz', new_user_registration_path, class: 'btn btn-danger btn-lg' %>
-  </div>    
+    <%= link_to 'Football Quiz', "/questions/2", class: 'btn btn-success btn-lg' %>
+</div>  
 
   <% else %>	
   <div class="jumbotron">
