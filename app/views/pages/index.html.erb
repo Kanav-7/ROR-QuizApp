@@ -12,16 +12,29 @@
   <h2> Sports Quiz </h2>
   <table class="table table-hover">
   <tr>
+    <th>
+      Sub Genre
+    </th>
+    <th>
+      Current Score
+    </th>
+    <th>
+      Options
+    </th>
+  </tr>
+  <tr>
    <td>Cricket </td>
+   <td><%= $sc1%></td>
    <td><%= link_to 'Resume', "/questions/1", class: 'btn btn-primary' %> 
        <%= link_to 'Restart', "/questions/1/reset", class: 'btn btn-primary' %>
-       <%= link_to 'Leaderboard', "/questions/1", class: 'btn btn-primary'%></td>
+       <%= link_to 'Leaderboard', "/leaderboard/1", class: 'btn btn-primary'%></td>
    </tr>
    <tr>
    <td>Football </td>
+   <td><%= $sc2%></td>
    <td><%= link_to 'Resume', "/questions/2", class: 'btn btn-primary' %> 
        <%= link_to 'Restart', "/questions/2/reset", class: 'btn btn-primary' %>
-       <%= link_to 'Leaderboard', "/questions/2", class: 'btn btn-primary'%></td>
+       <%= link_to 'Leaderboard', "/leaderboard/2", class: 'btn btn-primary'%></td>
    </tr>      
 
   </table>
@@ -36,12 +49,38 @@
       <p>Select Your Quiz here:</p>
   </div>
     </div>
-<div class="container">
+     <div class="container table-responsive">
   <h2> Sports Quiz </h2>
-    <%= link_to 'Cricket Quiz', "/questions/1", class: 'btn btn-success btn-lg' %>
+  <table class="table table-hover">
+  <tr>
+    <th>
+      Sub Genre
+    </th>
+    <th>
+      Current Score
+    </th>
+    <th>
+      Options
+    </th>
+  </tr>
+  <tr>
+   <td>Cricket </td>
+   <td><%= $sc1%></td>
+   <td><%= link_to 'Resume', "/questions/1", class: 'btn btn-primary' %> 
+       <%= link_to 'Restart', "/questions/1/reset", class: 'btn btn-primary' %>
+       <%= link_to 'Leaderboard', "/leaderboard/1", class: 'btn btn-primary'%></td>
+   </tr>
+   <tr>
+   <td>Football </td>
+   <td><%= $sc2%></td>
+   <td><%= link_to 'Resume', "/questions/2", class: 'btn btn-primary' %> 
+       <%= link_to 'Restart', "/questions/2/reset", class: 'btn btn-primary' %>
+       <%= link_to 'Leaderboard', "/leaderboard/2", class: 'btn btn-primary'%></td>
+   </tr>      
 
-    <%= link_to 'Football Quiz', "/questions/2", class: 'btn btn-success btn-lg' %>
-</div>  
+  </table>
+  </div>  
+
 
   <% else %>	
   <div class="jumbotron">

@@ -2,6 +2,21 @@ class QuestionsController < ApplicationController
   before_action :authenticate_user!
   skip_before_action :verify_authenticity_token
 
+  def leader
+  	$msg = ""
+	@mystore = Connect.where(quiz: params[:quiz_type]).all
+	$k = params[:quiz_type]
+	if $k == "1"
+		$msg = "Cricket"
+	elsif $k == "2"
+		$msg = "Football"
+	end		
+	if @mystore.empty?
+		redirect_to root_path , :alert => "Leaderboard is Empty."
+		return
+	end
+  end	
+
   def reset
   	@mystore = Connect.where(user: current_user,quiz: params[:quiz_type])
   	@mystore.limit(1).update_all(state: 0,score: 0)
@@ -70,9 +85,17 @@ class QuestionsController < ApplicationController
   	  		redirect_to "/questions/#{params[:quiz_type]}" , :notice => $message
 		else
   			redirect_to "/questions/#{params[:quiz_type]}" , :alert => $message
-  		end	
+  		end
+  	else
+  		@mystore.limit(1).update_all(state: 0,score: 0) 
+  		$message = "Game Over!\n Score = " +  $score.to_s
+  		redirect_to "/leaderboard/#{params[:quiz_type]}" , :notice => $message
   	end	
 
   end	
 
 end
+
+
+
+			

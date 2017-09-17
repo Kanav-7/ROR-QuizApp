@@ -1,0 +1,38 @@
+<% content_for :top_content do %>
+	<div class="jumbotron">
+  		<h1 style="text-align: center;">Leaderboard for <%= $msg %> </h1>
+	</div>
+	<div class="container">
+		<table class="table">
+			<tr>
+				<th>
+					#
+				</th>
+				<th>
+					Username
+				</th>
+				<th>
+					Score
+				</th>
+			</tr>
+
+		<% @mystore.to_a.each_with_index do |store,i| %>
+		 <% if store.user == current_user %>
+			<tr class="info">
+		 <% else %>
+		 	<tr>
+		 <% end %>		
+			<td>
+				<%= i+1 %>
+			</td>
+			<td>
+				<%= link_to store.user.name, "/users/#{store.user.id}" %>
+			</td>
+			<td>
+				<%= store.score %>
+			</td>	
+			</tr>
+		<% end %>		
+		</table>
+	</div>
+<% end %>

@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'questions/:quiz_type' => 'questions#show'
   post 'questions/:quiz_type' => 'questions#update'
   get 'questions/:quiz_type/reset' => 'questions#reset'  
+  get 'leaderboard/:quiz_type' => 'questions#leader'  
+
   get 'pages/index'
   root to:'pages#index'
 
