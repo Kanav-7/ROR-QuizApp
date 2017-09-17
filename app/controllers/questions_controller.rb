@@ -10,7 +10,12 @@ class QuestionsController < ApplicationController
 		$msg = "Cricket"
 	elsif $k == "2"
 		$msg = "Football"
+  elsif $k == "3"
+    $msg = "Bollywood"
+  elsif $k == "4"
+    $msg = "Hollywood"        
 	end		
+
 	if @mystore.empty?
 		redirect_to root_path , :alert => "Leaderboard is Empty."
 		return
