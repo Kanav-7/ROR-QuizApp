@@ -2,8 +2,12 @@
   <div class="container">
   	   <!-- <%= @question.inspect %>  -->
   	  <h1 align="center"><b> <%= @question.subgenre %> Quiz</b> </h1>
-  	  <h2>Your Highest Score: <%= $highscore %> </h2> 
-  	  <h2>Current Score: <%= $score %> </h2> 
+  	  <table class="table table-hover">
+  	  <tr>
+  	  <td><h2>Your Highest Score: <%= $highscore %></h2> </td>
+  	  <td><h2>Current Score: <%= $score %> </h2></td>
+  	  </tr>
+  	  </table> 
       	<h3><strong>Question <%= $p+1 %></strong></h3>
       	<strong><%= @question.content %></strong><br>
       	<form action= <%= @question.quiz_type.to_s %> method="post">
