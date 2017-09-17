@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
 
   def leader
   	$msg = ""
-	@mystore = Connect.where(quiz: params[:quiz_type]).all
+	@mystore = Connect.where(quiz: params[:quiz_type]).all.sort_by {|connect| connect.highscore}.reverse
 	$k = params[:quiz_type]
 	if $k == "1"
 		$msg = "Cricket"
@@ -45,23 +45,28 @@ class QuestionsController < ApplicationController
   	@questions = Question.where(quiz_type: params[:quiz_type])
   	@question = @questions[$p]
   	$len = @questions.size
-  	@opA = params[:A]
-  	@opB = params[:B]
-  	@opC = params[:C]
-  	@opD = params[:D]
 
-  	if @opA 
-  	  $str+="1"
-  	end	
-  	if @opB
-  	 $str+="2"
-  	end 
-  	if @opC
-  	 $str+="3"
-  	end 
-  	if @opD
-  	 $str+="4"
-  	end
+    if @question.ans1 < 10
+      $str = params[:answer]
+    else  
+    	@opA = params[:A]
+    	@opB = params[:B]
+    	@opC = params[:C]
+    	@opD = params[:D]
+
+    	if @opA 
+    	  $str+="1"
+    	end	
+    	if @opB
+    	 $str+="2"
+    	end 
+    	if @opC
+    	 $str+="3"
+    	end 
+    	if @opD
+    	 $str+="4"
+    	end
+    end  
 
  	$message = "Incorrect Answer"
   	$corr = 0
