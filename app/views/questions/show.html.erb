@@ -1,6 +1,7 @@
 <% content_for :top_content do %>
   <div class="container">
-  	  <%= @question.inspect %> 
+  	  <!-- <%= @question.inspect %> -->
+  	  <h2>Current Score: <%= $score %> </h2> 
       	<h3><strong>Question <%= $p+1 %></strong></h3>
       	<strong><%= @question.content %></strong><br>
       	<form action= <%= @question.quiz_type.to_s %> method="post">
@@ -15,8 +16,8 @@
 	      	</div>
 	      	<div class="checkbox">
 	      	<label><%= check_box_tag(:D) %> <%= @question.op4 %> </label>   
-	      	</div>
-	      	<input type="submit" name="Submit" value="Submit">
+	      	</div><br>
+	      	<input type="submit" name="Submit" value="Submit" class="btn btn-default btn-md">
       	</form>  	      	      	
     </div>
 <% end %>

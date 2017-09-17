@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'users/:id' => 'users#profile'
   get 'questions/:quiz_type' => 'questions#show'
   post 'questions/:quiz_type' => 'questions#update'
+  get 'questions/:quiz_type/reset' => 'questions#reset'  
   get 'pages/index'
   root to:'pages#index'
 
