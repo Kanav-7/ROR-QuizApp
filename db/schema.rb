@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170917025554) do
+ActiveRecord::Schema.define(version: 20170917205553) do
 
   create_table "connects", force: :cascade do |t|
     t.integer "user_id"
@@ -21,6 +21,12 @@ ActiveRecord::Schema.define(version: 20170917025554) do
     t.datetime "updated_at", null: false
     t.integer "highscore"
     t.index ["user_id"], name: "index_connects_on_user_id"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -34,6 +40,14 @@ ActiveRecord::Schema.define(version: 20170917025554) do
     t.integer "quiz_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "subgenres", force: :cascade do |t|
+    t.string "name"
+    t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["genre_id"], name: "index_subgenres_on_genre_id"
   end
 
   create_table "users", force: :cascade do |t|

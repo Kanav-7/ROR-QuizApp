@@ -3,19 +3,9 @@ class QuestionsController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def leader
-  	$msg = ""
 	@mystore = Connect.where(quiz: params[:quiz_type]).all.sort_by {|connect| connect.highscore}.reverse
-	$k = params[:quiz_type]
-	if $k == "1"
-		$msg = "Cricket"
-	elsif $k == "2"
-		$msg = "Football"
-  elsif $k == "3"
-    $msg = "Bollywood"
-  elsif $k == "4"
-    $msg = "Hollywood"        
-	end		
-
+  $msg = Subgenre.find(params[:quiz_type]).name
+  	
 	if @mystore.empty?
 		redirect_to root_path , :alert => "Leaderboard is Empty."
 		return
@@ -35,12 +25,15 @@ class QuestionsController < ApplicationController
   	if @mystore.empty?
 	  @mystore = Connect.new(user: current_user,quiz: params[:quiz_type],state: 0,score: 0,highscore: 0)
 	  @mystore.save
-	end
-	@mystore = Connect.where(user: current_user,quiz: params[:quiz_type]).first
-	$p = @mystore.state
-	$score = @mystore.score
-	$highscore = @mystore.highscore
-	@question = @questions[$p]	
+	  end
+	  @mystore = Connect.where(user: current_user,quiz: params[:quiz_type]).first
+	  $p = @mystore.state
+	  $score = @mystore.score
+	  $highscore = @mystore.highscore
+	  @question = @questions[$p]
+    if @question.nil?
+         redirect_to root_path , :alert => "Wait! Quiz is coming soon :)"
+    end     
 
   end
 
