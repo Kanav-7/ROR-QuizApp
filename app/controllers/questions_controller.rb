@@ -28,12 +28,13 @@ class QuestionsController < ApplicationController
   	@mystore = Connect.where(user: current_user,quiz: params[:quiz_type])
 
   	if @mystore.empty?
-	  @mystore = Connect.new(user: current_user,quiz: params[:quiz_type],state: 0,score: 0)
+	  @mystore = Connect.new(user: current_user,quiz: params[:quiz_type],state: 0,score: 0,highscore: 0)
 	  @mystore.save
 	end
 	@mystore = Connect.where(user: current_user,quiz: params[:quiz_type]).first
 	$p = @mystore.state
 	$score = @mystore.score
+	$highscore = @mystore.highscore
 	@question = @questions[$p]	
 
   end
@@ -72,10 +73,12 @@ class QuestionsController < ApplicationController
 
   	$p+=1
 
-
+  	if $score > $highscore
+  		$highscore = $score
+  	end	
   	@mystore = Connect.where(user: current_user,quiz: @question.quiz_type)
 
-	@mystore.limit(1).update_all(state: $p,score: $score)  
+	@mystore.limit(1).update_all(state: $p,score: $score,highscore: $highscore)  
 
 
  

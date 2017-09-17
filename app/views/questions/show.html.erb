@@ -1,6 +1,7 @@
 <% content_for :top_content do %>
   <div class="container">
-  	  <!-- <%= @question.inspect %> -->
+  	  <%= @question.inspect %>
+  	  <h2>Your Highest Score: <%= $highscore %> </h2> 
   	  <h2>Current Score: <%= $score %> </h2> 
       	<h3><strong>Question <%= $p+1 %></strong></h3>
       	<strong><%= @question.content %></strong><br>
